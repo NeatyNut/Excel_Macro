@@ -1,0 +1,255 @@
+
+
+Sub 취합()
+
+
+Application.Visible = False
+
+Dim path As String
+Dim 심의DB1 As String
+Dim 심의DB2 As String
+Dim 조치DB1 As String
+Dim 조치DB2 As String
+Dim 교육DB1 As String
+Dim name As String
+
+path = ThisWorkbook.path
+
+'제목
+심의DB1 = "학교폭력 사안 심의 결과"
+심의DB2 = "폭력 유형별 심의 현황"
+조치DB1 = "피해학생 보호조치 현황"
+조치DB2 = "가해학생 선도"
+교육DB1 = "가해학생(보호자) 특별교육 현황"
+
+name = ThisWorkbook.Sheets("학교목록").Cells(2, 4).Value
+schoolnum = ThisWorkbook.Sheets("학교목록").Cells(2, 4).CurrentRegion.Rows.Count
+filepath = path & "\" & name & ".xlsx"
+Application.Workbooks.Open Filename:=filepath
+
+'헤드 위치값 찾기
+For i = 1 To 1000 Step 1
+
+    If InStr(Workbooks(name & ".xlsx").Sheets(1).Cells(i, 1).Value, 심의DB1) <> 0 Then
+        row_심의1 = i + 3
+    End If
+    
+    If InStr(Workbooks(name & ".xlsx").Sheets(1).Cells(i, 1).Value, 심의DB2) <> 0 Then
+        row_심의2 = i + 3
+    End If
+    
+    If InStr(Workbooks(name & ".xlsx").Sheets(1).Cells(i, 1).Value, 조치DB1) <> 0 Then
+        row_조치1 = i + 3
+    End If
+    
+    If InStr(Workbooks(name & ".xlsx").Sheets(1).Cells(i, 1).Value, 조치DB2) <> 0 Then
+        row_조치2 = i + 3
+    End If
+    
+    If InStr(Workbooks(name & ".xlsx").Sheets(1).Cells(i, 1), 교육DB1) <> 0 Then
+        row_교육1 = i + 3
+    End If
+    
+    'for 구문 종료
+    If row_심의1 <> 0 And row_심의2 <> 0 And row_조치1 <> 0 And row_조치2 <> 0 And row_교육1 <> 0 Then
+        Exit For
+    End If
+    
+Next i
+
+'컬럼 찾기
+col_심의1 = Workbooks(name & ".xlsx").Sheets(1).Cells(row_심의1, 1).CurrentRegion.Columns.Count
+col_심의2 = Workbooks(name & ".xlsx").Sheets(1).Cells(row_심의2, 1).CurrentRegion.Columns.Count
+col_조치1 = Workbooks(name & ".xlsx").Sheets(1).Cells(row_조치1, 1).CurrentRegion.Columns.Count
+col_조치2 = Workbooks(name & ".xlsx").Sheets(1).Cells(row_조치2, 1).CurrentRegion.Columns.Count
+col_교육1 = Workbooks(name & ".xlsx").Sheets(1).Cells(row_교육1, 1).CurrentRegion.Columns.Count
+
+'내용 파트 시작 찾기
+For r1 = row_심의1 To row_심의1 + 3 Step 1
+    If Right(Workbooks(name & ".xlsx").Sheets(1).Cells(r1, 1).Value, 3) = "1학기" Then
+        row_심의1_body = r1
+        Exit For
+    End If
+Next r1
+    
+For r2 = row_심의2 To row_심의2 + 3 Step 1
+    If Right(Workbooks(name & ".xlsx").Sheets(1).Cells(r2, 1).Value, 3) = "1학기" Then
+        row_심의2_body = r2
+        Exit For
+    End If
+Next r2
+
+For r3 = row_조치1 To row_조치1 + 3 Step 1
+    If Right(Workbooks(name & ".xlsx").Sheets(1).Cells(r3, 1).Value, 3) = "1학기" Then
+        row_조치1_body = r3
+        Exit For
+    End If
+Next r3
+
+For r4 = row_조치2 To row_조치2 + 3 Step 1
+    If Right(Workbooks(name & ".xlsx").Sheets(1).Cells(r4, 1).Value, 3) = "1학기" Then
+        row_조치2_body = r4
+        Exit For
+    End If
+Next r4
+
+For r5 = row_교육1 To row_교육1 + 3 Step 1
+    If Right(Workbooks(name & ".xlsx").Sheets(1).Cells(r5, 1).Value, 3) = "1학기" Then
+        row_교육1_body = r5
+        Exit For
+    End If
+Next r5
+
+'내용 끝 찾기
+For rr1 = row_심의1_body To row_심의1_body + 50 Step 1
+    If Workbooks(name & ".xlsx").Sheets(1).Cells(rr1, 1).Value = "leftscroll" Then
+        row_심의1_end = rr1 - 1
+        Exit For
+    End If
+Next rr1
+
+For rr2 = row_심의2_body To row_심의2_body + 50 Step 1
+    If Workbooks(name & ".xlsx").Sheets(1).Cells(rr2, 1).Value = "leftscroll" Then
+        row_심의2_end = rr2 - 1
+        Exit For
+    End If
+Next rr2
+
+For rr3 = row_조치1_body To row_조치1_body + 50 Step 1
+    If Workbooks(name & ".xlsx").Sheets(1).Cells(rr3, 1).Value = "leftscroll" Then
+        row_조치1_end = rr3 - 1
+        Exit For
+    End If
+Next rr3
+
+For rr4 = row_조치2_body To row_조치2_body + 50 Step 1
+    If Workbooks(name & ".xlsx").Sheets(1).Cells(rr4, 1).Value = "leftscroll" Then
+        row_조치2_end = rr4 - 1
+        Exit For
+    End If
+Next rr4
+
+For rr5 = row_교육1_body To row_교육1_body + 50 Step 1
+    If Workbooks(name & ".xlsx").Sheets(1).Cells(rr5, 1).Value = "leftscroll" Then
+        row_교육1_end = rr5 - 1
+        Exit For
+    End If
+Next rr5
+
+st_col_심의2 = 2
+st_col_조치2 = 3
+'헤드작성
+Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_심의1, 1), Cells(r1 - 1, col_심의1)).copy
+ThisWorkbook.Sheets("학교폭력 심의 건수").Cells(4 - r1 + row_심의1, 4).PasteSpecial xlPasteAll
+
+'2부터
+Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_심의2, st_col_심의2), Cells(r2 - 1, col_심의2)).copy
+ThisWorkbook.Sheets("학교폭력 심의 건수").Cells(4 - r2 + row_심의2, col_심의1 + 4).PasteSpecial xlPasteAll
+
+Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_조치1, 1), Cells(r3 - 1, col_조치1)).copy
+ThisWorkbook.Sheets("조치현황").Cells(4 - r3 + row_조치1, 4).PasteSpecial xlPasteAll
+
+'3부터
+Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_조치2, st_col_조치2), Cells(r4 - 1, col_조치2)).copy
+ThisWorkbook.Sheets("조치현황").Cells(4 - r4 + row_조치2, col_조치1 + 4).PasteSpecial xlPasteAll
+
+Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_교육1, 1), Cells(r5 - 1, col_교육1)).copy
+ThisWorkbook.Sheets("특별교육현황").Cells(4 - r5 + row_교육1, 4).PasteSpecial xlPasteAll
+
+
+'내용복사
+Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_심의1_body, 1), Cells(row_심의1_end, col_심의1)).copy
+ThisWorkbook.Sheets("학교폭력 심의 건수").Cells(4, 4).PasteSpecial xlPasteAll
+rowcount_심의1 = row_심의1_end - row_심의1_body + 1
+
+For 심의 = 4 To 4 + rowcount_심의1 - 1 Step 1
+    ThisWorkbook.Sheets("학교폭력 심의 건수").Cells(심의, 3) = name
+Next 심의
+
+'2부터
+Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_심의2_body, st_col_심의2), Cells(row_심의2_end, col_심의2)).copy
+ThisWorkbook.Sheets("학교폭력 심의 건수").Cells(4, col_심의1 + 4).PasteSpecial xlPasteAll
+rowcount_심의2 = row_심의2_end - row_심의2_body + 1
+
+Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_조치1_body, 1), Cells(row_조치1_end, col_조치1)).copy
+ThisWorkbook.Sheets("조치현황").Cells(4, 4).PasteSpecial xlPasteAll
+rowcount_조치1 = row_조치1_end - row_조치1_body + 1
+
+For 조치 = 4 To 4 + rowcount_조치1 - 1 Step 1
+    ThisWorkbook.Sheets("조치현황").Cells(조치, 3) = name
+Next 조치
+
+'3부터
+Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_조치2_body, st_col_조치2), Cells(row_조치2_end, col_조치2)).copy
+ThisWorkbook.Sheets("조치현황").Cells(4, col_조치1 + 4).PasteSpecial xlPasteAll
+rowcount_조치2 = row_조치2_end - row_조치2_body + 1
+
+Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_교육1_body, 1), Cells(row_교육1_end, col_교육1)).copy
+ThisWorkbook.Sheets("특별교육현황").Cells(4, 4).PasteSpecial xlPasteAll
+rowcount_교육1 = row_교육1_end - row_교육1_body + 1
+
+For 교육 = 4 To 4 + rowcount_교육1 - 1 Step 1
+    ThisWorkbook.Sheets("특별교육현황").Cells(교육, 3) = name
+Next 교육
+
+Workbooks(name & ".xlsx").Close savechanges:=False
+
+
+'심의_row = Max(4 + rowcount_심의1, 4 + rowcount_심의2)
+심의_row = 4 + rowcount_심의1
+'조치_row = Max(4 + rowcount_조치1, 4 + rowcount_조치2)
+조치_row = 4 + rowcount_조치1
+교육_row = 4 + rowcount_교육1
+
+For file = 3 To schoolnum Step 1
+    name = ThisWorkbook.Sheets("학교목록").Cells(file, 4).Value
+    filepath = path & "\" & name & ".xlsx"
+    Application.Workbooks.Open Filename:=filepath
+    
+    Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_심의1_body, 1), Cells(row_심의1_end, col_심의1)).copy
+    ThisWorkbook.Sheets("학교폭력 심의 건수").Cells(심의_row, 4).PasteSpecial xlPasteAll
+    'rowcount_심의1 = row_심의1_end - row_심의1_body + 1
+
+    For 심의 = 심의_row To 심의_row + rowcount_심의1 - 1 Step 1
+        ThisWorkbook.Sheets("학교폭력 심의 건수").Cells(심의, 3) = name
+    Next 심의
+
+'2부터
+    Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_심의2_body, st_col_심의2), Cells(row_심의2_end, col_심의2)).copy
+    ThisWorkbook.Sheets("학교폭력 심의 건수").Cells(심의_row, col_심의1 + 4).PasteSpecial xlPasteAll
+    'rowcount_심의2 = row_심의2_end - row_심의2_body + 1
+
+    Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_조치1_body, 1), Cells(row_조치1_end, col_조치1)).copy
+    ThisWorkbook.Sheets("조치현황").Cells(조치_row, 4).PasteSpecial xlPasteAll
+    'rowcount_조치1 = row_조치1_end - row_조치1_body + 1
+
+    For 조치 = 조치_row To 조치_row + rowcount_조치1 - 1 Step 1
+        ThisWorkbook.Sheets("조치현황").Cells(조치, 3) = name
+    Next 조치
+
+'3부터
+    Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_조치2_body, st_col_조치2), Cells(row_조치2_end, col_조치2)).copy
+    ThisWorkbook.Sheets("조치현황").Cells(조치_row, col_조치1 + 4).PasteSpecial xlPasteAll
+    'rowcount_조치2 = row_조치2_end - row_조치2_body + 1
+
+    Workbooks(name & ".xlsx").Sheets(1).Range(Cells(row_교육1_body, 1), Cells(row_교육1_end, col_교육1)).copy
+    ThisWorkbook.Sheets("특별교육현황").Cells(교육_row, 4).PasteSpecial xlPasteAll
+    'rowcount_교육1 = row_교육1_end - row_교육1_body + 1
+    
+    For 교육 = 교육_row To 교육_row + rowcount_교육1 - 1 Step 1
+        ThisWorkbook.Sheets("특별교육현황").Cells(교육, 3) = name
+    Next 교육
+    
+    '심의_row = Max(심의_row + rowcount_심의1, 심의_row + rowcount_심의2)
+    심의_row = 심의_row + rowcount_심의1
+    '조치_row = Max(조치_row + rowcount_조치1, 조치_row + rowcount_조치2)
+    조치_row = 조치_row + rowcount_조치1
+    교육_row = 교육_row + rowcount_교육1
+
+    Workbooks(name & ".xlsx").Close savechanges:=False
+Next file
+
+Application.Visible = True
+
+MsgBox ("완료하였습니다.")
+End Sub

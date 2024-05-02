@@ -1,0 +1,83 @@
+Public Function IsExistSheet(sheetName As String) As Boolean
+    Dim ws As Worksheet
+    For Each ws In Sheets
+        If ws.Name = sheetName Then
+            IsExistSheet = True
+            Exit Function
+        End If
+    Next
+    IsExistSheet = False
+End Function
+
+Sub 확인란01_click()
+Dim d2_shtname As String
+Dim sht As Worksheet
+
+d2_shtname = "선행반_" & ThisWorkbook.Sheets("붙이는시트").Range("AH2")
+If IsExistSheet(d2_shtname) Then
+Else
+MsgBox "전일 시트가 없는 듯 합니다"
+End If
+
+End Sub
+
+Sub 확인란02_click()
+Dim d2_shtname As String
+Dim sht As Worksheet
+
+d2_shtname = "윈터_" & ThisWorkbook.Sheets("붙이는시트").Range("AH2")
+If IsExistSheet(d2_shtname) Then
+Else
+MsgBox "전일 시트가 없는 듯 합니다"
+End If
+
+End Sub
+
+Sub 확인란03_click()
+Dim d2_shtname As String
+Dim sht As Worksheet
+
+d2_shtname = "정규반수_" & ThisWorkbook.Sheets("붙이는시트").Range("AH2")
+If IsExistSheet(d2_shtname) Then
+Else
+MsgBox "전일 시트가 없는 듯 합니다"
+End If
+
+End Sub
+
+Sub 확인란04_click()
+Dim d2_shtname As String
+Dim sht As Worksheet
+
+d2_shtname = "선행정규_" & ThisWorkbook.Sheets("붙이는시트").Range("AH2")
+If IsExistSheet(d2_shtname) Then
+Else
+MsgBox "전일 시트가 없는 듯 합니다"
+End If
+
+End Sub
+
+Sub 확인란05_click()
+Dim d2_shtname As String
+Dim sht As Worksheet
+
+d2_shtname = "반수반_" & ThisWorkbook.Sheets("붙이는시트").Range("AH2")
+If IsExistSheet(d2_shtname) Then
+Else
+MsgBox "전일 시트가 없는 듯 합니다"
+End If
+
+End Sub
+
+Sub 확인란06_click()
+Dim d2_shtname As String
+Dim sht As Worksheet
+
+d2_shtname = "정규반_" & ThisWorkbook.Sheets("붙이는시트").Range("AH2")
+If IsExistSheet(d2_shtname) Then
+Else
+MsgBox "전일 시트가 없는 듯 합니다"
+End If
+
+End Sub
+

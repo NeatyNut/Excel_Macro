@@ -1,0 +1,176 @@
+Function file_Exists(filedir As String) As Boolean
+
+End Function
+Sub 파일열고붙이기()
+
+
+
+Dim sr As Range
+Dim a As Long
+Dim rn As Long
+Dim i As Long
+Dim b As Long
+Dim a1 As Long
+Dim find_row As Long
+Dim find_col As Long
+Dim location_row As Long
+Dim location_col As Long
+
+Application.ScreenUpdating = False
+
+
+rn = Selection.CurrentRegion.Rows.Count
+
+pat = ThisWorkbook.Path  '주소
+mn = ThisWorkbook.Name   '파일명
+mn2 = ActiveSheet.Name
+
+a = Selection.Row '문구 잡기
+a1 = Selection.Row
+
+For i = a1 To rn
+
+
+location_row = 0 '위치값 초기화
+location_col = 0 '위치값 초기화
+
+  Workbooks(mn).Sheets(mn2).Range("B" & a).Select  '구문 잡기'
+
+Set sr2 = Selection
+sr1 = sr2.Offset(, -1)
+cp = sr1 & "_" & sr2 & "_교과별 학업성취 사항.xlsx"
+filedir = pat & "\" & cp
+
+
+If Dir(filedir) <> vbNullString Then
+Workbooks.Open filedir
+Windows(cp).Activate
+
+    For find_col = 1 To 5 Step 1
+      For find_row = 1 To 20 Step 1
+        If ActiveSheet.Cells(find_row, find_col).Value = "(단위: 점수, %)" Then
+            location_row = find_row
+            location_col = find_col
+            Exit For
+        Else
+        End If
+      Next find_row
+      
+      If location_row = 0 Then
+      Else
+      Exit For
+      End If
+      
+    Next find_col
+      
+Cells(location_row, location_col).CurrentRegion.Select
+
+Selection.Copy
+Sheets.Add After:=ActiveSheet
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Set sr3 = Selection
+sr3.Resize(, 2).Select
+Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+sr3.Resize(Selection.Count / 2 - 1, 1).Offset(1, -2).Select
+    ActiveCell.FormulaR1C1 = _
+        "=IF(RC[3]=""1학년"",""1학년"",IF(RC[3]=""2학년"",""2학년"",IF(RC[3]=""3학년"",""3학년"",R[-1]C)))"
+Selection.FillDown
+Selection.Offset(, 1).Select
+ActiveCell.FormulaR1C1 = "=IF(or(ISNUMBER(RC[3]),isnumber(rc[10])),RC[-1],"""")"
+Selection.FillDown
+Range("a2").CurrentRegion.Select
+Set sr4 = Selection
+sr4.AutoFilter
+ActiveSheet.Range("$A$1:$Q$100").AutoFilter Field:=2, Criteria1:="<>"
+Selection.Copy
+Windows(mn).Activate
+sr2.Offset(, 1).Select
+ActiveSheet.Paste
+Set sr5 = Selection
+sr5.Resize(1).Select
+Selection.Delete Shift:=xlUp
+sr5.Resize(, 1).Select
+Selection.Delete Shift:=xlToLeft
+b = Selection.Count
+Selection.Offset(1, -2).Resize(b - 1, 2).Select
+Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+sr2.End(xlDown).Select
+Application.DisplayAlerts = False
+Windows(cp).Close
+a = a + b
+b = 0
+Else
+sr2.Offset(, 1) = "확인 요망"
+a = a + 1
+End If
+
+Next i
+
+
+Application.ScreenUpdating = True
+
+End Sub
+Sub 파일확인하기()
+
+Dim sr As Range
+Dim rn As Long
+Dim i As Long
+Dim b As Long
+Dim a As Long
+Dim a1 As Long
+Dim find_row As Long
+Dim find_col As Long
+Dim location_row As Long
+Dim location_col As Long
+Dim school_name As String
+Dim arr1() As String
+
+
+Application.ScreenUpdating = False
+
+rn = Selection.CurrentRegion.Rows.Count
+
+pat = ThisWorkbook.Path  '주소
+mn = ThisWorkbook.Name   '파일명
+mn2 = ActiveSheet.Name
+
+a = Selection.Row '문구 잡기
+a1 = Selection.Row
+
+For i = a1 To rn
+
+Workbooks(mn).Sheets(mn2).Range("B" & a).Select  '구문 잡기'
+Set sr2 = Selection
+sr1 = sr2.Offset(, -1)
+cp = sr1 & "_" & sr2 & "_교과별 학업성취 사항.xlsx"
+filedir = pat & "\" & cp
+
+If Dir(filedir) <> vbNullString Then
+    Workbooks.Open filedir
+    Windows(cp).Activate
+    SN = ActiveSheet.Cells(Cells(Rows.Count, 1).End(xlUp).Row - 2, 1).Value
+    Schoolname = (Mid(SN, 6, Len(SN) - 7))
+    If Schoolname = sr2.Value Then
+        Windows(cp).Close
+        Windows(mn).Activate
+        sr2.Offset(, 1) = "문제 없음"
+        a = a + 1
+    Else
+        Windows(cp).Close
+        Windows(mn).Activate
+        sr2.Offset(, 1) = "파일 확인 요망"
+        a = a + 1
+    End If
+Else
+    Windows(mn).Activate
+    sr2.Offset(, 1) = "파일 없음"
+    a = a + 1
+End If
+                
+
+Next i
+
+Application.ScreenUpdating = True
+
+End Sub

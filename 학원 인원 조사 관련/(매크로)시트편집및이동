@@ -1,0 +1,253 @@
+Private Declare PtrSafe Function URLDownloadToFile Lib "urlmon" _
+    Alias "URLDownloadToFileA" (ByVal pCaller As Long, ByVal szURL As String, _
+    ByVal szFileName As String, ByVal dwReserved As Long, ByVal lpfnCB As Long) As Long
+
+Public Function IsExistSheet(sheetName As String) As Boolean
+    Dim ws As Worksheet
+    For Each ws In Sheets
+        If ws.Name = sheetName Then
+            IsExistSheet = True
+            Exit Function
+        End If
+    Next
+    IsExistSheet = False
+End Function
+
+Sub makesht()
+Dim d1_shtname As String
+Dim d2_shtname As String
+Dim rownum As Integer
+Dim srtnum As Integer
+Dim endnum As Integer
+Dim key As String
+Dim date_format As Date
+Dim link As String
+
+If IsExistSheet("함수시트") Then
+    ThisWorkbook.Sheets("함수시트").Visible = True
+Else
+    MsgBox "함수시트가 없어서 작업할 수 없습니다."
+    Exit Sub
+End If
+
+strnum = 1
+endnum = 6
+
+Dim ban As Collection
+Set ban = New Collection
+
+
+ban.Add "", "1"
+ban.Add "", "2"
+ban.Add "", "3"
+ban.Add "", "4"
+ban.Add "", "5"
+ban.Add "", "6"
+
+For i = strnum To endnum Step 1
+    If ThisWorkbook.Sheets("붙이는시트").Cells(3, i + 25).Value = True Then
+        key = CStr(i)
+        d1_shtname = ban.Item(key) & "_" & ThisWorkbook.Sheets("붙이는시트").Cells(2, endnum + 27).Value
+        d2_shtname = ban.Item(key) & "_" & ThisWorkbook.Sheets("붙이는시트").Cells(2, endnum + 28).Value
+        date_format = Format(ThisWorkbook.Sheets("붙이는시트").Cells(2, endnum + 26).Value, "YYYY-MM-DD")
+        link = ""
+
+        '<<<<<파일다운>>>>>>
+        savefile = Environ("USERPROFILE") & "\Desktop\인원.xls"
+        chkfile = Dir(savefile)
+        If (Len(chkfile) > 0) Then
+        'Application.Workbooks.Open Filename:=savefile
+        'Workbooks("인원.xls").Close
+        Kill (savefile)
+        Else
+        End If
+        
+        myresult = URLDownloadToFile(0, link, savefile, 0, 0)
+
+        If myresult <> 0 Then
+            MsgBox "다시 실행 해주십시오"
+            Exit Sub
+        Else
+        End If
+        '<<<<<파일다운>>>>>>
+        
+        If IsExistSheet(d1_shtname) Then
+            ThisWorkbook.Sheets(d1_shtname).Visible = True
+            
+            '<<<<<파일 열고 붙이기>>>>>>
+            
+            ThisWorkbook.Sheets(d1_shtname).Activate
+            '고정 필드
+            ThisWorkbook.Sheets(d1_shtname).Range("A:W").CurrentRegion.Select
+            Selection.ClearContents
+            
+            Application.Workbooks.Open Filename:=savefile
+            peo_sht_row = Workbooks("인원.xls").Sheets(1).Range("A1").CurrentRegion.Rows.Count
+            peo_sht_col = Workbooks("인원.xls").Sheets(1).Range("A1").CurrentRegion.Columns.Count
+            Workbooks("인원.xls").Sheets(1).Range(Cells(2, 1), Cells(peo_sht_row, peo_sht_col)).Select
+            Selection.Copy
+            ThisWorkbook.Sheets(d1_shtname).Range("A1").PasteSpecial
+            MsgBox d1_shtname & "를 업데이트 하였습니다."
+            Workbooks("인원.xls").Close
+            '<<<<<파일 열고 붙이기>>>>>>
+            
+            'msgbox "기존에 있는 시트입니다"
+            
+        Else
+            ThisWorkbook.Sheets("함수시트").Copy after:=Sheets("붙이는시트")
+            ActiveSheet.Name = d1_shtname
+    
+            If IsExistSheet(d2_shtname) Then
+                Sheets(d2_shtname).Activate
+                Sheets(d2_shtname).Range(Range("G3"), Range("G3").End(xlDown)).Select
+                Selection.Copy
+                rownum = Sheets(d2_shtname).Range("G3").CurrentRegion.Rows.Count
+                Sheets(d1_shtname).Activate
+                Sheets(d1_shtname).Range(Cells(3, 32), Cells(rownum, 32)).PasteSpecial xlPasteValues
+        
+                Sheets(d2_shtname).Activate
+                Sheets(d2_shtname).Range(Range("L3"), Range("L3").End(xlDown)).Select
+                Selection.Copy
+                Sheets(d1_shtname).Activate
+                Sheets(d1_shtname).Range(Cells(3, 39), Cells(rownum, 39)).PasteSpecial xlPasteValues
+        
+                Sheets(d2_shtname).Activate
+                Sheets(d2_shtname).Range(Range("S3"), Range("S3").End(xlDown)).Select
+                Selection.Copy
+                Sheets(d1_shtname).Activate
+                Sheets(d1_shtname).Range(Cells(3, 46), Cells(rownum, 46)).PasteSpecial xlPasteValues
+            Else
+            End If
+            '<<<<<파일 열고 붙이기>>>>>>
+            Application.Workbooks.Open Filename:=savefile
+            peo_sht_row = Workbooks("인원.xls").Sheets(1).Range("A1").CurrentRegion.Rows.Count
+            peo_sht_col = Workbooks("인원.xls").Sheets(1).Range("A1").CurrentRegion.Columns.Count
+            Workbooks("인원.xls").Sheets(1).Range(Cells(2, 1), Cells(peo_sht_row, peo_sht_col)).Select
+            Selection.Copy
+            ThisWorkbook.Sheets(d1_shtname).Range("A1").PasteSpecial
+            MsgBox d1_shtname & "를 생성하였습니다."
+            Workbooks("인원.xls").Close
+            '<<<<<파일 열고 붙이기>>>>>>
+            
+                        
+        End If
+    End If
+Next i
+
+ThisWorkbook.Sheets("함수시트").Visible = False
+ThisWorkbook.Sheets("붙이는시트").Activate
+
+'msgbox "전부 완료하였습니다"
+
+End Sub
+
+Sub gotosht()
+Dim goto_shtname As String
+
+goto_shtname = ThisWorkbook.Sheets("붙이는시트").Range("AF8").Value
+
+If IsExistSheet(goto_shtname) Then
+    ThisWorkbook.Sheets(goto_shtname).Visible = True
+    ThisWorkbook.Sheets(goto_shtname).Activate
+Else
+    MsgBox "없는 시트 이름입니다."
+End If
+End Sub
+
+Sub gotohome()
+Dim goto_shthome As String
+
+goto_shthome = ThisWorkbook.Sheets("붙이는시트").Activate
+
+End Sub
+
+Sub gotojungri()
+Dim goto_shthome As String
+
+goto_shthome = ThisWorkbook.Sheets("정리시트").Activate
+
+End Sub
+
+Sub goto1()
+Dim goto_1 As String
+
+goto_1 = ThisWorkbook.Sheets("정리시트").Range("AF1").Value & "_" & ThisWorkbook.Sheets("정리시트").Range("AL2")
+
+If IsExistSheet(goto_1) Then
+    ThisWorkbook.Sheets(goto_1).Visible = True
+    ThisWorkbook.Sheets(goto_1).Activate
+Else
+    MsgBox "해당시트가 없습니다"
+End If
+
+End Sub
+
+Sub goto2()
+Dim goto_2 As String
+
+goto_2 = ThisWorkbook.Sheets("정리시트").Range("AG1").Value & "_" & ThisWorkbook.Sheets("정리시트").Range("AL2").Value
+
+If IsExistSheet(goto_2) Then
+    ThisWorkbook.Sheets(goto_2).Visible = True
+    ThisWorkbook.Sheets(goto_2).Activate
+Else
+    MsgBox "해당시트가 없습니다"
+End If
+
+End Sub
+
+Sub goto3()
+Dim goto_3 As String
+
+goto_3 = ThisWorkbook.Sheets("정리시트").Range("AH1").Value & "_" & ThisWorkbook.Sheets("정리시트").Range("AL2").Value
+
+If IsExistSheet(goto_3) Then
+    ThisWorkbook.Sheets(goto_3).Visible = True
+    ThisWorkbook.Sheets(goto_3).Activate
+Else
+    MsgBox "해당시트가 없습니다"
+End If
+
+End Sub
+
+Sub goto4()
+Dim goto_4 As String
+
+goto_4 = ThisWorkbook.Sheets("정리시트").Range("AI1").Value & "_" & ThisWorkbook.Sheets("정리시트").Range("AL2").Value
+
+If IsExistSheet(goto_4) Then
+    ThisWorkbook.Sheets(goto_4).Visible = True
+    ThisWorkbook.Sheets(goto_4).Activate
+Else
+    MsgBox "해당시트가 없습니다"
+End If
+
+End Sub
+
+Sub goto5()
+Dim goto_5 As String
+
+goto_5 = ThisWorkbook.Sheets("정리시트").Range("AJ1").Value & "_" & ThisWorkbook.Sheets("정리시트").Range("AL2").Value
+
+If IsExistSheet(goto_5) Then
+    ThisWorkbook.Sheets(goto_5).Visible = True
+    ThisWorkbook.Sheets(goto_5).Activate
+Else
+    MsgBox "해당시트가 없습니다"
+End If
+
+End Sub
+
+Sub goto6()
+Dim goto_6 As String
+
+goto_6 = ThisWorkbook.Sheets("정리시트").Range("AK1").Value & "_" & ThisWorkbook.Sheets("정리시트").Range("AL2")
+
+If IsExistSheet(goto_6) Then
+    ThisWorkbook.Sheets(goto_6).Visible = True
+    ThisWorkbook.Sheets(goto_6).Activate
+Else
+    MsgBox "해당시트가 없습니다"
+End If
+
+End Sub
