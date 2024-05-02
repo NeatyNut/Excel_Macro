@@ -1,26 +1,25 @@
 # 자체제작 매크로 모음
 ## 📌설명
-- 해당 코드들은 모두 사무 자동화를 위해 별개로 작성되었으며, 특정 URL 또는 특정 파일 구조에 대한 지식 및 특정 파일 없이, 그리고 엑셀 파일에 기반하여 사용하기에 코드만을 통해 따로 사용하기 불가능합니다.
+- 해당 코드들은 모두 사무 자동화를 위해 별개로 작성되었으며, 특정 URL 또는 특정 파일 구조에 대한 지식 및 특정 파일 없이, 그리고 엑셀 파일에 기반하여 사용하기에 코드만을 통해 따로 사용하기 불가능합니다. 이때 코드는 클래스가 정확히 모르던 시기, 오로지 제가 일을 효율적으로 하기위해 홀로 작성한 코드라 각주가 없는 점 양해바랍니다. 또한 vba 구글링에 기반하여 작성되었기에 코드도 깔끔하지 못한 점 고려부탁드립니다.
 
 ## 📌매크로 목록
 |인덱스|구분|파일명|성과|
 |---|---|---|---|
-|1|전처리(경쟁률)|직원 경쟁률 조사 확인시 피벗화|버튼 하나로 다운 후 자동피벗|
-|2|전처리(성취도,학폭)|xls → xlsx 변환기|파일에서 해당 학교명 추출하여 이름을 포함하여 자동변경|
-|2|전처리(성취도,학폭)|성취도파일확인&통합|수천개 xlsx파일 DB형식으로 단일 파일화|
-|2|전처리(성취도,학폭)|학폭현황파일확인&통합|수천개 xlsx파일 DB형식으로 단일 파일화|
-|3|취합(크롤링)|학교게시판크롤링|버튼 하나로 동시에 여러개 학교 발표자료 실시간 취합(변표, 추가합격현황 등)|
-|3|취합(크롤링)|전국 대학교 입학처 url 자동 취합|대학별 자료 취합 시 url 이용하여 데이터 취합시간 감축|
-|4|전처리(매칭용)|hwp → xlsx 표 이동시 셀 정리|소요시간 5인 3일 → 4인 1일로 감축|
-|5|전처리(매칭용)|(엑셀버전)대교협 발표 추가모집DB tidy data화|발표 즉시 집계 가능한 DB로 전처리|
-|5|전처리(매칭용)|(파이썬)대교협 발표 추가모집DB tidy data화|발표 즉시 집계 가능한 DB로 전처리|
-|6|사무자동화(비용처리)|아르바이트 임금명세서 pdf암호화 파일 실행|pdf암호화 exe파일 실행|
-|6|사무자동화(비용처리)|임금명세서 메일 발송|각자 이메일에 임금 명세서 자동 발송|
-|6|사무자동화(비용처리)|메일 발송용 폴더 정리|발송용 폴더 내 이전 파일 자동 삭제|
-|6|사무자동화(비용처리)|임금 명세서 시트 PDF화|발송용 폴더에 법인명&근로자명&근무날짜 포함하여 자동 배출|
-|6|사무자동화(비용처리)|근무 날짜 자기정의함수를 통해 자연스럽게 엮기|전자 결재 게시용 시트에서 활용|
-|6|사무자동화(비용처리)|PDF 생일에 맞게 자동 암호화 exe파일 코드|실행 시 pdf 자동 암호화로 임금명세서 개인정보유출 방지|
-|7|사무자동화(인원조사)|url연동하여 해당날짜 인원 데이터 자동 취합|인원 조사 자동화|
-|7|사무자동화(인원조사)|전일 보고 인원 비교 후 오류 점검|보고 인원 점검 자동화|
-
-
+|1|전처리(경쟁률)|[직원 경쟁률 조사 확인시 피벗화](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EA%B2%BD%EC%9F%81%EB%A5%A0%EC%A1%B0%EC%82%AC/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%EA%B2%BD%EC%9F%81%EB%A5%A0%ED%99%95%EC%9D%B8%ED%94%BC%EB%B2%97.vbs)|버튼 하나로 다운 후 자동피벗|
+|2|전처리(성취도,학폭)|[xls → xlsx 변환기](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EC%84%B1%EC%B7%A8%EB%8F%84%2C%20%ED%95%99%ED%8F%AD%20%EC%B7%A8%ED%95%A9%EC%9A%A9/(%EB%A7%A4%ED%81%AC%EB%A1%9C)xls_to_xlsx.vbs)|파일에서 해당 학교명 추출하여 이름을 포함하여 자동변경|
+|2|전처리(성취도,학폭)|[성취도파일확인&통합](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EC%84%B1%EC%B7%A8%EB%8F%84%2C%20%ED%95%99%ED%8F%AD%20%EC%B7%A8%ED%95%A9%EC%9A%A9/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%EC%84%B1%EC%B7%A8%EB%8F%84%ED%8C%8C%EC%9D%BC%ED%99%95%EC%9D%B8%26%ED%86%B5%ED%95%A9)|수천개 xlsx파일 DB형식으로 단일 파일화|
+|2|전처리(성취도,학폭)|[학폭현황파일확인&통합](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EC%84%B1%EC%B7%A8%EB%8F%84%2C%20%ED%95%99%ED%8F%AD%20%EC%B7%A8%ED%95%A9%EC%9A%A9/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%ED%95%99%ED%8F%AD%ED%98%84%ED%99%A9%ED%8C%8C%EC%9D%BC%ED%99%95%EC%9D%B8%26%ED%86%B5%ED%95%A9)|수천개 xlsx파일 DB형식으로 단일 파일화|
+|3|취합(크롤링)|[학교게시판크롤링](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%ED%95%99%EA%B5%90%EA%B2%8C%EC%8B%9C%ED%8C%90%ED%81%AC%EB%A1%A4%EB%A7%81.vbs)|버튼 하나로 동시에 여러개 학교 발표자료 실시간 취합(변표, 추가합격현황 등)|
+|3|취합(크롤링)|[전국 대학교 입학처 url 자동 취합](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%ED%95%99%EA%B5%90%EC%9E%85%ED%95%99%EC%B2%98url%ED%81%AC%EB%A1%A4%EB%A7%81.vbs)|대학별 자료 취합 시 url 이용하여 데이터 취합시간 감축|
+|4|전처리(매칭용)|[hwp → xlsx 표 이동시 셀 정리 및 vlookup 함수 추가](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EC%9E%90%EB%A3%8C%EC%A7%91%EB%B0%B0%EC%B9%98%EC%A0%90%EB%A7%A4%EC%B9%AD/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%EC%88%98%EC%8B%9C%EC%9E%90%EB%A3%8C%EC%A7%91%20%EB%B0%B0%EC%B9%98%EC%A0%90%20%EB%A7%A4%EC%B9%AD%EC%9A%A9.vbs)|소요시간 5인 3일 → 4인 1일로 감축|
+|5|전처리(매칭용)|[(엑셀버전)대교협 발표 추가모집DB tidy data화](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EC%B6%94%EA%B0%80%EB%AA%A8%EC%A7%91/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%EC%B6%94%EA%B0%80%EB%AA%A8%EC%A7%91DB%EC%A0%84%EC%B2%98%EB%A6%AC.vbs)|발표 즉시 집계 가능한 DB로 전처리|
+|5|전처리(매칭용)|[(파이썬)대교협 발표 추가모집DB tidy data화](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EC%B6%94%EA%B0%80%EB%AA%A8%EC%A7%91/%EC%B6%94%EA%B0%80%EB%AA%A8%EC%A7%91DB%EC%A0%84%EC%B2%98%EB%A6%AC.py)|발표 즉시 집계 가능한 DB로 전처리|
+|6|사무자동화(비용처리)|[아르바이트 임금명세서 pdf암호화 파일 실행](https://github.com/NeatyNut/Excel_Macro/blob/main/%EC%95%84%EB%A5%B4%EB%B0%94%EC%9D%B4%ED%8A%B8%20%EB%B9%84%EC%9A%A9%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/(%EB%A7%A4%ED%81%AC%EB%A1%9C)PDF%EC%95%94%ED%98%B8%ED%99%94%20%ED%8C%8C%EC%9D%BC%20%EC%8B%A4%ED%96%89.vbs)|pdf암호화 exe파일 실행|
+|6|사무자동화(비용처리)|[임금명세서 메일 발송](https://github.com/NeatyNut/Excel_Macro/blob/main/%EC%95%84%EB%A5%B4%EB%B0%94%EC%9D%B4%ED%8A%B8%20%EB%B9%84%EC%9A%A9%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%EB%A9%94%EC%9D%BC%20%EB%B0%9C%EC%86%A1.vbs)|각자 이메일에 임금 명세서 자동 발송|
+|6|사무자동화(비용처리)|[메일 발송용 폴더 정리](https://github.com/NeatyNut/Excel_Macro/blob/main/%EC%95%84%EB%A5%B4%EB%B0%94%EC%9D%B4%ED%8A%B8%20%EB%B9%84%EC%9A%A9%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%EB%A9%94%EC%9D%BC%20%EB%B0%9C%EC%86%A1%EC%9A%A9%20%ED%8F%B4%EB%8D%94%20%EC%A0%95%EB%A6%AC.vbs)|발송용 폴더 내 이전 파일 자동 삭제|
+|6|사무자동화(비용처리)|[임금 명세서 시트 PDF화](https://github.com/NeatyNut/Excel_Macro/blob/main/%EC%95%84%EB%A5%B4%EB%B0%94%EC%9D%B4%ED%8A%B8%20%EB%B9%84%EC%9A%A9%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%EC%9E%84%EA%B8%88%EB%AA%85%EC%84%B8%EC%84%9C%20PDF%ED%99%94.vbs)|발송용 폴더에 법인명&근로자명&근무날짜 포함하여 자동 배출|
+|6|사무자동화(비용처리)|[근무 날짜 자기정의함수를 통해 자연스럽게 엮기](https://github.com/NeatyNut/Excel_Macro/blob/main/%EC%95%84%EB%A5%B4%EB%B0%94%EC%9D%B4%ED%8A%B8%20%EB%B9%84%EC%9A%A9%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/(%EC%9E%90%EA%B8%B0%EC%A0%95%EC%9D%98%ED%95%A8%EC%88%98)%EB%85%84%EC%9B%94%20%EA%B3%A0%EB%A0%A4%ED%95%9C%20%EA%B7%BC%EB%AC%B4%EB%82%A0%EC%A7%9C%20%EC%97%AE%EA%B8%B0.vbs)|전자 결재 게시용 시트에서 활용|
+|6|사무자동화(비용처리)|[PDF 생일에 맞게 자동 암호화 exe파일 코드](https://github.com/NeatyNut/Excel_Macro/blob/main/%EC%95%84%EB%A5%B4%EB%B0%94%EC%9D%B4%ED%8A%B8%20%EB%B9%84%EC%9A%A9%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/pdf%EC%95%94%ED%98%B8%ED%99%94.py)|실행 시 pdf 자동 암호화로 임금명세서 개인정보유출 방지|
+|7|사무자동화(인원조사)|[url연동하여 해당날짜 인원 데이터 자동 취합](https://github.com/NeatyNut/Excel_Macro/blob/main/%ED%95%99%EC%9B%90%20%EC%9D%B8%EC%9B%90%20%EC%A1%B0%EC%82%AC%20%EA%B4%80%EB%A0%A8/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%EC%8B%9C%ED%8A%B8%ED%8E%B8%EC%A7%91%EB%B0%8F%EC%9D%B4%EB%8F%99)|인원 조사 자동화|
+|7|사무자동화(인원조사)|[전일 보고 인원 비교 후 오류 점검](https://github.com/NeatyNut/Excel_Macro/blob/main/%ED%95%99%EC%9B%90%20%EC%9D%B8%EC%9B%90%20%EC%A1%B0%EC%82%AC%20%EA%B4%80%EB%A0%A8/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%EC%A0%84%EC%9D%BC%EA%B8%88%EC%9D%BC%EC%9D%B8%EC%9B%90%EB%B9%84%EA%B5%90)|보고 인원 점검 자동화|
+|8|사무자동화(hwp화)|[입시결과 한글화](https://github.com/NeatyNut/hwpauto)|소요시간 5인 8시간 → 0인 2시간으로 감축|
