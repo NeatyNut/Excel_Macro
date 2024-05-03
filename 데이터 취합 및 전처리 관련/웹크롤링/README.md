@@ -5,11 +5,11 @@
 
 ## 📌실제모습
 
-### 학교게시판 크롤링 : [코드보기](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%ED%95%99%EA%B5%90%EA%B2%8C%EC%8B%9C%ED%8C%90%ED%81%AC%EB%A1%A4%EB%A7%81.vbs)
+- 학교게시판 크롤링 : [코드보기](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%ED%95%99%EA%B5%90%EA%B2%8C%EC%8B%9C%ED%8C%90%ED%81%AC%EB%A1%A4%EB%A7%81.vbs)
 
 ![(매크로)학교게시판크롤링](https://github.com/NeatyNut/Excel_Macro/assets/89675001/73e79d9c-cc69-45ab-b70b-13808050cafb)
 
 
-### 학교 입학처 url 크롤링 : [코드보기](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%ED%95%99%EA%B5%90%EC%9E%85%ED%95%99%EC%B2%98url%ED%81%AC%EB%A1%A4%EB%A7%81.vbs)
+- 학교 입학처 url 크롤링 : [코드보기](https://github.com/NeatyNut/Excel_Macro/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%B7%A8%ED%95%A9%20%EB%B0%8F%20%EC%A0%84%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%ED%95%99%EA%B5%90%EC%9E%85%ED%95%99%EC%B2%98url%ED%81%AC%EB%A1%A4%EB%A7%81.vbs)
 
 ![(매크로)전국 대학교 입학처 url 자동 취합](https://github.com/NeatyNut/Excel_Macro/assets/89675001/1fbf259b-a2e6-4a04-8fee-9a82465a8f0b)
