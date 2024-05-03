@@ -14,5 +14,7 @@
 
 - 인원 현황표 자동화(함수)
 
-![(매크로)인원 조사 자동화](https://github.com/NeatyNut/Excel_Macro/assets/89675001/59985353-4a36-4d94-9dea-21672e63e415)
+![(함수)날짜 입력 시 인원표 변경](https://github.com/NeatyNut/Excel_Macro/assets/89675001/82ab09d4-7c83-41eb-8da0-83629b5aaae6)
+
+
 
