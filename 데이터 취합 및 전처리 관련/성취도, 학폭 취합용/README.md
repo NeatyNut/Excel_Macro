@@ -20,6 +20,6 @@
 ![(매크로)학폭현황파일확인 통합](https://github.com/NeatyNut/Excel_Macro/assets/89675001/59b70506-33c7-4ffa-b85b-a49d72d65afd)
 
 ## 📌관련기사 포스팅
-- [학업성취도 관련 기사](https://www.kmib.co.kr/article/view.asp?arcid=0924195420&code=11131300&cp=nv)
+- 학업성취도 관련 기사 : [‘최악 학력 저하’ 코로나 탓? 오락가락 교육정책 부메랑 | 국민일보](https://www.kmib.co.kr/article/view.asp?arcid=0924195420&code=11131300&cp=nv)
 
-- [학교폭력 현황 관련 기사](https://www.joongang.co.kr/article/25154838#home)
+- 학교폭력 현황 관련 기사 : [중학생 학폭, 고교의 2배…특목·자사고 입시에도 학폭 반영될까 | 중앙일보](https://www.joongang.co.kr/article/25154838#home)
