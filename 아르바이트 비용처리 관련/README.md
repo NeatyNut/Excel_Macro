@@ -7,7 +7,6 @@
 ## 📌실제모습
 
 - 메일 발송용 폴더 정리 : [코드보기](https://github.com/NeatyNut/Excel_Macro/blob/main/%EC%95%84%EB%A5%B4%EB%B0%94%EC%9D%B4%ED%8A%B8%20%EB%B9%84%EC%9A%A9%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%EB%A9%94%EC%9D%BC%20%EB%B0%9C%EC%86%A1%EC%9A%A9%20%ED%8F%B4%EB%8D%94%20%EC%A0%95%EB%A6%AC.vbs)
-
 - 임금명세서 PDF화 : [코드보기](https://github.com/NeatyNut/Excel_Macro/blob/main/%EC%95%84%EB%A5%B4%EB%B0%94%EC%9D%B4%ED%8A%B8%20%EB%B9%84%EC%9A%A9%EC%B2%98%EB%A6%AC%20%EA%B4%80%EB%A0%A8/(%EB%A7%A4%ED%81%AC%EB%A1%9C)%EC%9E%84%EA%B8%88%EB%AA%85%EC%84%B8%EC%84%9C%20PDF%ED%99%94.vbs)
 
 ![(매크로)폴더정리 임금 명세서 PDF화](https://github.com/NeatyNut/Excel_Macro/assets/89675001/ff90c17a-fc26-44e1-9639-3361a5d13a4c)
