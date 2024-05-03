@@ -34,9 +34,9 @@ for i in range(file_list_number) :
 
     # 원본 파일 불러오기 (첫번째 파일)
     pdfFile = open(Original_file, 'rb')
-    pdfReader = PyPDF2.PdfFileReader(pdfFile)
+    pdfReader = PyPDF2.PdfReader(pdfFile)
 
-    Encrypted = pdfReader.isEncrypted  # 암호가 걸려 있으면 - True // 걸려있지 않으면 - False
+    Encrypted = pdfReader.is_encrypted  # 암호가 걸려 있으면 - True // 걸려있지 않으면 - False
 
     if Encrypted :
         print()
@@ -52,11 +52,11 @@ for i in range(file_list_number) :
             R_password = "111111"
 
         # 값을 붙여넣을 빈 객체(파일)를 생성
-        pdfWriter = PyPDF2.PdfFileWriter()
+        pdfWriter = PyPDF2.PdfWriter()
 
         # 원본 pdf의 각 page의 값을 하나씩 빈 객체에 붙여넣기
-        for pageNum in range(pdfReader.numPages):
-            pdfWriter.addPage(pdfReader.getPage(pageNum))
+        for pageNum in range(len(pdfReader.pages)):
+            pdfWriter.add_page(pdfReader.pages[pageNum])
 
         # 빈 객체를 암호화 시킴
         pdfWriter.encrypt(R_password)
